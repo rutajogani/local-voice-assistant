@@ -1,12 +1,12 @@
 import os
-
-from speech_to_text import listen
-from text_to_speech import speak
 from datetime import datetime
 
 from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIChatModel
 from pydantic_ai.providers.ollama import OllamaProvider
+
+from local_voice_assistant.voice_assistant.speech_to_text import listen
+from local_voice_assistant.voice_assistant.text_to_speech import speak
 
 model = OpenAIChatModel(
     "qwen3.5:2b",
@@ -48,7 +48,7 @@ agent = Agent(
     )
 )
 
-def main():
+def start_assistant():
     print("Local agent ready! Type 'quit' to exit. \n")
     history = []
     while True:
@@ -63,4 +63,4 @@ def main():
         speak(result.output)
 
 if __name__ == "__main__":
-    main()
+    start_assistant()

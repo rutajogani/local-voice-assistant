@@ -1,7 +1,7 @@
 [project]
-name = "ai-agent"
+name = "local_voice_assistant"
 version = "0.1.0"
-description = "Add your description here"
+description = "Ask by voice, get a helpful reply, and hear it spoken aloud. The assistant can also tell the time, do simple calculations, and save notes."
 readme = "README.md"
 authors = [
     { name = "Ruta Jogani", email = "ruta007jogani@gmail.com" }
@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [project.scripts]
-ai-agent = "ai_agent:main"
+start = "local_voice_assistant:main"
 
 [build-system]
 requires = ["uv_build>=0.13.6,<0.14.0"]

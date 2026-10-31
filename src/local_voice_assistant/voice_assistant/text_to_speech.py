@@ -1,5 +1,5 @@
-from openai import OpenAI
 import sounddevice as sd
+from openai import OpenAI
 
 client = OpenAI(
     base_url="http://localhost:11434/v1",
