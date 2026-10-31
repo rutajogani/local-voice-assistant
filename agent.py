@@ -1,6 +1,7 @@
 import os
 
 from speech_to_text import listen
+from text_to_speech import speak
 from datetime import datetime
 
 from pydantic_ai import Agent
@@ -52,13 +53,14 @@ def main():
     history = []
     while True:
         print("You: ")
-        user_input = input("You: ")
-        # user_input = listen()
+        #user_input = input("You: ")
+        user_input = listen()
         if user_input.strip().lower() in ("quit","exit"):
             break
         result = agent.run_sync(user_input, message_history=history)
         history = result.all_messages()
         print(f"\n Agent: {result.output}\n")
+        speak(result.output)
 
 if __name__ == "__main__":
     main()
