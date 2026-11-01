@@ -1,6 +1,9 @@
 import os
+from typing import Any, List, Optional
 
 from local_voice_assistant.agent_tools_instructions.query_db import (
+    get_table_schema,
+    list_tables,
     run_command,
     run_query,
 )
@@ -18,14 +21,35 @@ def read_notes() -> str:
     with open(NOTES_FILE, encoding="utf-8")as file:
         return file.read()
 
-def select_query(sql: str, params: tuple | None = None) -> list[dict]:
-    return run_query(sql, params)
+def select_query(sql: str, params: Optional[List[Any]] = None) -> List[dict]:
+    """Run a read-only SELECT query on the PostgreSQL database and return the rows.
+    
+    Use this to look up data, for example users. The `users` table has a
+    `username` column. Never use this for INSERT, UPDATE, or DELETE.
 
-def query_command(sql: str, params: tuple | None = None) -> int:
+    Args:
+        sql: A SELECT statement. Use %s placeholders for values.
+        params: Values for the %s placeholders, in order.
+    """
+    rows = run_query(sql)
+    return [dict(r) for r in rows]
+
+def query_command(sql: str, params: Optional[List[Any]] = None) -> int:
+    """Run an INSERT, UPDATE, or DELETE statement on the PostgreSQL database.
+   
+    Use this only when the user explicitly asks to add, change, or remove data.
+
+    Args:
+        sql: An INSERT, UPDATE, or DELETE statement. Use %s placeholders for values.
+        params: Values for the %s placeholders, in order.
+
+    Returns:
+        The number of rows affected.
+    """
     return run_command(sql, params)
 
 def tools():
-    tools = [save_note, read_notes, select_query, query_command]
+    tools = [save_note, read_notes, select_query, query_command, get_schema_of_table, tables_list]
 
     return tools
 
