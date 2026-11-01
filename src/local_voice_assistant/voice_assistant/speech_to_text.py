@@ -8,10 +8,7 @@ def listen():
         with sr.Microphone() as source:
             print("🎤 Listening...")
 
-            # Adjust for ambient noise 
             recognizer.adjust_for_ambient_noise(source, duration=1)
-
-            # Wait until user speaks
             audio = recognizer.listen(source)
 
         print("🔍 Recognizing...")
