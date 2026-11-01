@@ -48,6 +48,28 @@ def query_command(sql: str, params: Optional[List[Any]] = None) -> int:
     """
     return run_command(sql, params)
 
+def get_schema_of_table(table_name: str) -> List[dict]:
+    """Get the columns of a table: name, data type, nullable, and default.
+
+    Always call this before writing a SQL query for a table, so you use the
+    correct column names.
+
+    Args:
+        table_name: The exact name of the table, for example "users".
+    """
+    rows = get_table_schema(table_name)
+    if not rows:
+        return [{"error": f"Table '{table_name}' not found. Call tables_list to see available tables."}]
+    return [dict(r) for r in rows]
+
+
+def tables_list() -> List[str]:
+    """List all tables in the PostgreSQL database.
+
+    Use this first when you don't know which tables exist.
+    """
+    return list_tables()
+
 def tools():
     tools = [save_note, read_notes, select_query, query_command, get_schema_of_table, tables_list]
 
