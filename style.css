@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #fff;
+  color: #30303d;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 80px;
+  flex: 0 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #eeedf1;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+.mark {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #f3f0ff;
+  color: #7867d8;
+  font-size: 20px;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.composer-area {
+  width: min(100%, 930px);
+  margin: auto auto 0;
+}
+
+.composer {
+  width: 100%;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px 12px 22px;
+  border: 1px solid #e8e7ed;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(25 20 50 / 3%);
+}
+
+.composer:focus-within {
+  border-color: #cfc8f0;
+}
+
+.composer textarea {
+  flex: 1;
+  min-height: 30px;
+  max-height: 120px;
+  resize: none;
+  padding: 5px 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #30303d;
+  font: inherit;
+  font-size: 18px;
+}
+
+.composer textarea::placeholder {
+  color: #aaa9b4;
+}
+
+.send {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 14px;
+  background: #7867d8;
+  color: #fff;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.send:hover {
+  background: #6655c7;
+}
+
+@media (max-width: 600px) {
+  header {
+    height: 68px;
+    flex-basis: 68px;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  main {
+    padding: 16px;
+  }
+
+  .composer {
+    min-height: 64px;
+    padding-left: 16px;
+    border-radius: 16px;
+  }
+
+  .composer textarea {
+    font-size: 16px;
+  }
+
+  .send {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+    border-radius: 12px;
+  }
+}

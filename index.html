@@ -1,14 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini AI chat</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Mini AI Chat</h1>
-  <p> Ask Anything</p>
-  <input type="text">
-  
+  <div class="page">
+    <header>
+      <div class="brand">
+        <span class="mark" aria-hidden="true">✳</span>
+        Mini AI Chat
+      </div>
+    </header>
+    <main>
+      <div class="composer-area">
+        <form class="composer" action="#">
+          <textarea rows="1" aria-label="Message Morrow" placeholder="Message Morrow…"></textarea>
+          <button class="send" type="submit" aria-label="Send message">↑</button>
+        </form>
+      </div>
+    </main>
+  </div>
 </body>
 </html>
